@@ -6,9 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.InstantDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.key.InstantKeyDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.key.LocalDateKeyDeserializer;
-import org.fintecy.md.coinbase.model.Currency;
-import org.fintecy.md.coinbase.model.ExchangeRate;
-import org.fintecy.md.coinbase.model.Product;
+import org.fintecy.md.coinbase.model.*;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 import org.fintecy.md.coinbase.model.dto.ProductsResponse;
 
@@ -25,11 +23,16 @@ public class CoinbaseModule extends SimpleModule {
     public CoinbaseModule() {
         super(CoinbaseModule.class.getSimpleName(), VERSION,
                 Map.of(
+                        OrderBook.class, OrderBookDeserializer.INSTANCE,
                         ExchangeRate.class, ExchangeRateDeserializer.INSTANCE,
+                        Candle.class, CandleDeserializer.INSTANCE,
                         Currency.class, CurrencyDeserializer.INSTANCE,
                         Product.class, ProductDeserializer.INSTANCE,
+                        
+                        CandlesResponse.class, CandlesResponseDeserializer.INSTANCE,
                         CurrenciesResponse.class, CurrenciesResponseDeserializer.INSTANCE,
                         ProductsResponse.class, ProductsResponseDeserializer.INSTANCE,
+
                         Instant.class, InstantDeserializer.INSTANT,
                         LocalDate.class, LocalDateDeserializer.INSTANCE));
 

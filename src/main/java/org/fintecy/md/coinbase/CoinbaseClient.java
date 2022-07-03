@@ -2,10 +2,7 @@ package org.fintecy.md.coinbase;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.failsafe.Policy;
-import org.fintecy.md.coinbase.model.Currency;
-import org.fintecy.md.coinbase.model.ExchangeRate;
-import org.fintecy.md.coinbase.model.Product;
-import org.fintecy.md.coinbase.model.ProductCode;
+import org.fintecy.md.coinbase.model.*;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 import org.fintecy.md.coinbase.model.dto.ProductsResponse;
 
@@ -65,6 +62,29 @@ public class CoinbaseClient implements CoinbaseApi {
     }
 
     @Override
+    public CompletableFuture<List<Candle>> candles(ProductCode productCode, long granularity, long start) {
+        var httpRequest = HttpRequest.newBuilder()
+                .uri(create(rootPath + "/products/" + productCode.getCode() + "/candles?granularity=" + granularity + "&start=" + start))
+                .build();
+
+        return client.sendAsync(httpRequest, ofString())
+                .thenApply(HttpResponse::body)
+                .thenApply(body -> parseResponse(body, CandlesResponse.class))
+                .thenApply(MicroType::getValue);
+    }
+
+    @Override
+    public CompletableFuture<OrderBook> orderBook(ProductCode productCode, OrderBookDepth level) {
+        var httpRequest = HttpRequest.newBuilder()
+                .uri(create(rootPath + "/products/" + productCode.getCode() + "/book?level=" + level.getLevel()))
+                .build();
+
+        return client.sendAsync(httpRequest, ofString())
+                .thenApply(HttpResponse::body)
+                .thenApply(body -> parseResponse(body, OrderBook.class));
+    }
+
+    @Override
     public CompletableFuture<Product> product(String productId) {
         var httpRequest = HttpRequest.newBuilder()
                 .uri(create(rootPath + "/products/" + productId))
@@ -84,7 +104,7 @@ public class CoinbaseClient implements CoinbaseApi {
         return client.sendAsync(httpRequest, ofString())
                 .thenApply(HttpResponse::body)
                 .thenApply(body -> parseResponse(body, ProductsResponse.class))
-                .thenApply(ProductsResponse::products);
+                .thenApply(MicroType::getValue);
     }
 
     @Override
@@ -96,7 +116,7 @@ public class CoinbaseClient implements CoinbaseApi {
         return client.sendAsync(httpRequest, ofString())
                 .thenApply(HttpResponse::body)
                 .thenApply(body -> parseResponse(body, CurrenciesResponse.class))
-                .thenApply(CurrenciesResponse::currencies);
+                .thenApply(MicroType::getValue);
     }
 
     private <T> T parseResponse(String body, Class<T> tClass) {

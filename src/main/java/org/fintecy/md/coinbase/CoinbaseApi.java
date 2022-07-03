@@ -1,12 +1,11 @@
 package org.fintecy.md.coinbase;
 
-import org.fintecy.md.coinbase.model.Currency;
-import org.fintecy.md.coinbase.model.ExchangeRate;
-import org.fintecy.md.coinbase.model.Product;
-import org.fintecy.md.coinbase.model.ProductCode;
+import org.fintecy.md.coinbase.model.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+
+import static org.fintecy.md.coinbase.model.OrderBookDepth.LEVEL_1;
 
 /**
  * @author batiaev
@@ -27,8 +26,31 @@ public interface CoinbaseApi {
     CompletableFuture<ExchangeRate> latest(ProductCode productId);
 
     /**
-     * @return product details
+     * Return candlestick chart
+     * @param productCode - product code e.g. BTC-USD
+     * @param granularity
+     * @param start
+     * @return candlesticks chart
+     * @see <a href="https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=86400&start=1554214400">test request</a>
+     */
+    CompletableFuture<List<Candle>> candles(ProductCode productCode, long granularity, long start);
+
+    /**
+     * Return product order book on required level of granularity
+     * @param productCode - product code e.g. BTC-USD
+     * @param level - granularity can be 1, 2 or 3
+     * @return order book
+     * @see <a href="https://api.exchange.coinbase.com/products/btc-usd/book?level=2">test request</a>
+     */
+    CompletableFuture<OrderBook> orderBook(ProductCode productCode, OrderBookDepth level);
+
+    default CompletableFuture<OrderBook> orderBook(String productCode) {
+        return orderBook(ProductCode.product(productCode), LEVEL_1);
+    }
+
+    /**
      * @param productId - product id e.g. BTC-USD
+     * @return product details
      * @see <a href="https://api.exchange.coinbase.com/products/btc-usd">test request</a>
      */
     CompletableFuture<Product> product(String productId);

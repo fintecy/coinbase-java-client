@@ -1,9 +1,6 @@
 package org.fintecy.md.coinbase;
 
-import org.fintecy.md.coinbase.model.Currency;
-import org.fintecy.md.coinbase.model.ExchangeRate;
-import org.fintecy.md.coinbase.model.Product;
-import org.fintecy.md.coinbase.model.ProductCode;
+import org.fintecy.md.coinbase.model.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +18,16 @@ public class NoOpCoinbaseApi implements CoinbaseApi {
 
     @Override
     public CompletableFuture<ExchangeRate> latest(ProductCode productCode) {
+        throw new IllegalStateException("not implemented");
+    }
+
+    @Override
+    public CompletableFuture<List<Candle>> candles(ProductCode productCode, long granularity, long start) {
+        throw new IllegalStateException("not implemented");
+    }
+
+    @Override
+    public CompletableFuture<OrderBook> orderBook(ProductCode productCode, OrderBookDepth level) {
         throw new IllegalStateException("not implemented");
     }
 
