@@ -26,6 +26,14 @@ public interface CoinbaseApi {
     CompletableFuture<ExchangeRate> latest(ProductCode productId);
 
     /**
+     * Return products stats (daily candle stick)
+     * @param productCode - product code e.g. BTC-USD
+     * @return candlestick stats
+     * @see <a href="https://api.exchange.coinbase.com/products/BTC-USD/stats">test request</a>
+     */
+    CompletableFuture<ProductStats> stats(ProductCode productCode);
+
+    /**
      * Return candlestick chart
      * @param productCode - product code e.g. BTC-USD
      * @param granularity

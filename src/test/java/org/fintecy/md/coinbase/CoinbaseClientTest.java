@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutionException;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static java.math.BigDecimal.valueOf;
 import static java.time.Instant.ofEpochMilli;
+import static java.time.temporal.ChronoUnit.SECONDS;
 import static org.fintecy.md.coinbase.CoinbaseClient.coinbaseClient;
 import static org.fintecy.md.coinbase.model.Currency.currency;
 import static org.fintecy.md.coinbase.model.Product.product;
@@ -35,6 +36,30 @@ class CoinbaseClientTest {
                 .rootPath("http://localhost:7777")
                 .build()
                 .latest(productCode)
+                .get();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void should_return_stats() throws ExecutionException, InterruptedException {
+        var product = ProductCode.product("BTC-USD");
+        long epoch = Instant.now().toEpochMilli();
+        var expected =
+                new ProductStats(ofEpochMilli(epoch).truncatedTo(SECONDS),
+                        valueOf(18755.75),
+                        valueOf(19381.29),
+                        valueOf(19268.43),
+                        valueOf(19060.87),
+                        valueOf(9334.30692409),
+                        valueOf(751802.37670686));
+        stubFor(get("/products/" + product.getCode() + "/stats")
+                .willReturn(aResponse()
+                        .withBodyFile("stats.json")));
+
+        var actual = coinbaseClient()
+                .rootPath("http://localhost:7777")
+                .build()
+                .stats(product)
                 .get();
         assertEquals(expected, actual);
     }

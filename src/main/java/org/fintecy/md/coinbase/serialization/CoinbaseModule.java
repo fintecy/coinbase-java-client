@@ -21,20 +21,20 @@ public class CoinbaseModule extends SimpleModule {
             GROUP_ID, ARTIFACT_ID);
 
     public CoinbaseModule() {
-        super(CoinbaseModule.class.getSimpleName(), VERSION,
-                Map.of(
-                        OrderBook.class, OrderBookDeserializer.INSTANCE,
-                        ExchangeRate.class, ExchangeRateDeserializer.INSTANCE,
-                        Candle.class, CandleDeserializer.INSTANCE,
-                        Currency.class, CurrencyDeserializer.INSTANCE,
-                        Product.class, ProductDeserializer.INSTANCE,
-                        
-                        CandlesResponse.class, CandlesResponseDeserializer.INSTANCE,
-                        CurrenciesResponse.class, CurrenciesResponseDeserializer.INSTANCE,
-                        ProductsResponse.class, ProductsResponseDeserializer.INSTANCE,
+        super(CoinbaseModule.class.getSimpleName(), VERSION, Map.of(
+                Instant.class, InstantDeserializer.INSTANT,
+                LocalDate.class, LocalDateDeserializer.INSTANCE));
 
-                        Instant.class, InstantDeserializer.INSTANT,
-                        LocalDate.class, LocalDateDeserializer.INSTANCE));
+        addDeserializer(ProductStats.class, ProductStatsDeserializer.INSTANCE);
+        addDeserializer(OrderBook.class, OrderBookDeserializer.INSTANCE);
+        addDeserializer(ExchangeRate.class, ExchangeRateDeserializer.INSTANCE);
+        addDeserializer(Candle.class, CandleDeserializer.INSTANCE);
+        addDeserializer(Currency.class, CurrencyDeserializer.INSTANCE);
+        addDeserializer(Product.class, ProductDeserializer.INSTANCE);
+
+        addDeserializer(CandlesResponse.class, CandlesResponseDeserializer.INSTANCE);
+        addDeserializer(CurrenciesResponse.class, CurrenciesResponseDeserializer.INSTANCE);
+        addDeserializer(ProductsResponse.class, ProductsResponseDeserializer.INSTANCE);
 
         addKeyDeserializer(LocalDate.class, LocalDateKeyDeserializer.INSTANCE);
         addKeyDeserializer(Instant.class, InstantKeyDeserializer.INSTANCE);

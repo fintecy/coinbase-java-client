@@ -5,15 +5,15 @@ import java.time.Instant;
 import java.util.Objects;
 
 public class Candle {
-    private final Instant granularity;
+    private final Instant timestamp;
     private final BigDecimal low;
     private final BigDecimal high;
     private final BigDecimal open;
     private final BigDecimal close;
     private final BigDecimal volume;
 
-    public Candle(Instant granularity, BigDecimal low, BigDecimal high, BigDecimal open, BigDecimal close, BigDecimal volume) {
-        this.granularity = granularity;
+    public Candle(Instant timestamp, BigDecimal low, BigDecimal high, BigDecimal open, BigDecimal close, BigDecimal volume) {
+        this.timestamp = timestamp;
         this.low = low;
         this.high = high;
         this.open = open;
@@ -21,8 +21,8 @@ public class Candle {
         this.volume = volume;
     }
 
-    public Instant getGranularity() {
-        return granularity;
+    public Instant getTimestamp() {
+        return timestamp;
     }
 
     public BigDecimal getLow() {
@@ -50,7 +50,7 @@ public class Candle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Candle candle = (Candle) o;
-        return Objects.equals(granularity, candle.granularity)
+        return Objects.equals(timestamp, candle.timestamp)
                 && Objects.equals(low, candle.low)
                 && Objects.equals(high, candle.high)
                 && Objects.equals(open, candle.open)
@@ -60,13 +60,13 @@ public class Candle {
 
     @Override
     public int hashCode() {
-        return Objects.hash(granularity, low, high, open, close, volume);
+        return Objects.hash(timestamp, low, high, open, close, volume);
     }
 
     @Override
     public String toString() {
         return "Candle{" +
-                "granularity=" + granularity +
+                "timestamp=" + timestamp +
                 ", low=" + low +
                 ", high=" + high +
                 ", open=" + open +

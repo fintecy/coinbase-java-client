@@ -62,6 +62,17 @@ public class CoinbaseClient implements CoinbaseApi {
     }
 
     @Override
+    public CompletableFuture<ProductStats> stats(ProductCode productCode) {
+        var httpRequest = HttpRequest.newBuilder()
+                .uri(create(rootPath + "/products/" + productCode.getCode() + "/stats"))
+                .build();
+
+        return client.sendAsync(httpRequest, ofString())
+                .thenApply(HttpResponse::body)
+                .thenApply(body -> parseResponse(body, ProductStats.class));
+    }
+
+    @Override
     public CompletableFuture<List<Candle>> candles(ProductCode productCode, long granularity, long start) {
         var httpRequest = HttpRequest.newBuilder()
                 .uri(create(rootPath + "/products/" + productCode.getCode() + "/candles?granularity=" + granularity + "&start=" + start))

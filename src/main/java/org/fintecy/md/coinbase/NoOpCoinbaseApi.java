@@ -22,6 +22,11 @@ public class NoOpCoinbaseApi implements CoinbaseApi {
     }
 
     @Override
+    public CompletableFuture<ProductStats> stats(ProductCode productCode) {
+        throw new IllegalStateException("not implemented");
+    }
+
+    @Override
     public CompletableFuture<List<Candle>> candles(ProductCode productCode, long granularity, long start) {
         throw new IllegalStateException("not implemented");
     }
