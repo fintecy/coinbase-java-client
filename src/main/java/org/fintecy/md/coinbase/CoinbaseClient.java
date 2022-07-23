@@ -15,6 +15,8 @@ import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 import org.fintecy.md.coinbase.model.dto.ProductsResponse;
 import org.fintecy.md.coinbase.model.products.*;
 import org.fintecy.md.coinbase.security.CoinbaseAuthHeaderGenerator;
+import org.fintecy.md.coinbase.security.HeaderGenerator;
+import org.fintecy.md.coinbase.security.NoHeadersGenerator;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -38,14 +40,16 @@ public class CoinbaseClient implements CoinbaseApi {
     private final HttpClient client;
     private final ObjectMapper mapper;
     private final List<Policy<Object>> policies;
-    private final CoinbaseAuthHeaderGenerator headerGenerator;
+    private final HeaderGenerator headerGenerator;
 
     protected CoinbaseClient(String rootPath, CoinbaseAuthConfig authConfig, ObjectMapper mapper, HttpClient httpClient, List<Policy<Object>> policies) {
         this.client = checkRequired(httpClient, "Http client required for Coinbase client");
         this.mapper = checkRequired(mapper, "object mapper is required for serialization");
         this.rootPath = checkRequired(rootPath, "root path cannot be empty");
         this.policies = ofNullable(policies).orElse(List.of());
-        this.headerGenerator = new CoinbaseAuthHeaderGenerator(authConfig.getKey(), authConfig.getPassphrase(), authConfig.getSecret());
+        this.headerGenerator = authConfig.equals(CoinbaseAuthConfig.EMPTY)
+                ? new NoHeadersGenerator()
+                : new CoinbaseAuthHeaderGenerator(authConfig.getKey(), authConfig.getPassphrase(), authConfig.getSecret());
     }
 
     public static CoinbaseApi api() {
