@@ -13,6 +13,7 @@ class CoinbaseClientBuilder {
     private HttpClient client = HttpClient.newHttpClient();
     private List<Policy<Object>> policies = new ArrayList<>();
     private String rootPath = CoinbaseApi.ROOT_PATH;
+    private CoinbaseAuthConfig authConfig = CoinbaseAuthConfig.EMPTY;
 
     public CoinbaseClientBuilder useClient(HttpClient client) {
         this.client = client;
@@ -29,12 +30,21 @@ class CoinbaseClientBuilder {
         return this;
     }
 
+    public CoinbaseClientBuilder authConfig(String key, String secret, String passphrase) {
+        return authConfig(new CoinbaseAuthConfig(key, secret, passphrase));
+    }
+
+    public CoinbaseClientBuilder authConfig(CoinbaseAuthConfig authConfig) {
+        this.authConfig = authConfig;
+        return this;
+    }
+
     public CoinbaseClientBuilder with(Policy<Object> policy) {
         this.policies.add(policy);
         return this;
     }
 
     public CoinbaseApi build() {
-        return new CoinbaseClient(rootPath, mapper, client, policies);
+        return new CoinbaseClient(rootPath, authConfig, mapper, client, policies);
     }
 }

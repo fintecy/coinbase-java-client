@@ -1,0 +1,29 @@
+[
+  {
+    "id": "d7998186-8bc7-48c7-ab79-6babd84bf9ad",
+    "currency": "GBP",
+    "balance": "123.4500000000000000",
+    "hold": "0.0000000000000000",
+    "available": "123.45",
+    "profile_id": "d7ecfe14-4cb3-4f22-a920-dd6f9aa48ed1",
+    "trading_enabled": true
+  },
+  {
+    "id": "0735a79d-8d29-4820-bc32-bf12bde4c2b0",
+    "currency": "BTC",
+    "balance": "0.0000000000000000",
+    "hold": "0.0000000000000000",
+    "available": "0",
+    "profile_id": "d7ecfe14-4cb3-4f22-a920-dd6f9aa48ed1",
+    "trading_enabled": true
+  },
+  {
+    "id": "5281e886-04c7-427e-86bf-3e6595083eb1",
+    "currency": "ETH",
+    "balance": "22.300000000000000",
+    "hold": "0.0000000000000000",
+    "available": "22.3",
+    "profile_id": "d7ecfe14-4cb3-4f22-a920-dd6f9aa48ed1",
+    "trading_enabled": true
+  }
+]

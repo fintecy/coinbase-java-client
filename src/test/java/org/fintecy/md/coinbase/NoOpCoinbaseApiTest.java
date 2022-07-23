@@ -18,6 +18,21 @@ class NoOpCoinbaseApiTest {
     }
 
     @Test
+    void should_throw_exception_for_accounts() {
+        assertThrows(IllegalStateException.class, () -> noOpCoinbaseApi.accounts().get());
+    }
+
+    @Test
+    void should_throw_exception_for_products() {
+        assertThrows(IllegalStateException.class, () -> noOpCoinbaseApi.products().get());
+    }
+
+    @Test
+    void should_throw_exception_for_product() {
+        assertThrows(IllegalStateException.class, () -> noOpCoinbaseApi.product("USD/GBP").get());
+    }
+
+    @Test
     void should_throw_exception_for_latest() {
         assertThrows(IllegalStateException.class, () -> noOpCoinbaseApi.latest("USD/GBP").get());
     }

@@ -1,12 +1,17 @@
 package org.fintecy.md.coinbase;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import com.github.tomakehurst.wiremock.matching.ContainsPattern;
+import com.github.tomakehurst.wiremock.matching.RegexPattern;
+import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 import org.fintecy.md.coinbase.model.*;
+import org.fintecy.md.coinbase.model.secure.Account;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -20,6 +25,55 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @WireMockTest(httpPort = 7777)
 class CoinbaseClientTest {
+    @Test
+    void should_return_accounts() throws ExecutionException, InterruptedException {
+        String key = "key";
+        String secret = "secret";
+        String passphrase = "passphrase";
+        stubFor(get("/accounts")
+                .withHeader("CB-ACCESS-KEY", new ContainsPattern(key))
+                .withHeader("CB-ACCESS-PASSPHRASE", new ContainsPattern(passphrase))
+                .withHeader("CB-ACCESS-TIMESTAMP", new ContainsPattern(String.valueOf(Instant.now().getEpochSecond())))
+//                .withHeader("CB-ACCESS-SIGN", new RegexPattern(".*"))
+                .willReturn(aResponse()
+                        .withBodyFile("accounts.json")));
+
+        var expected = List.of(
+                new Account(
+                        UUID.fromString("d7998186-8bc7-48c7-ab79-6babd84bf9ad"),
+                        CurrencyCode.currency("GBP"),
+                        new BigDecimal("123.4500000000000000"),
+                        new BigDecimal("0.0000000000000000"),
+                        new BigDecimal("123.45"),
+                        UUID.fromString("d7ecfe14-4cb3-4f22-a920-dd6f9aa48ed1"),
+                        true
+                        ),
+                new Account(
+                        UUID.fromString("0735a79d-8d29-4820-bc32-bf12bde4c2b0"),
+                        CurrencyCode.currency("BTC"),
+                        new BigDecimal("0.0000000000000000"),
+                        new BigDecimal("0.0000000000000000"),
+                        new BigDecimal("0"),
+                        UUID.fromString("d7ecfe14-4cb3-4f22-a920-dd6f9aa48ed1"),
+                        true),
+                new Account(
+                        UUID.fromString("5281e886-04c7-427e-86bf-3e6595083eb1"),
+                        CurrencyCode.currency("ETH"),
+                        new BigDecimal("22.300000000000000"),
+                        new BigDecimal("0.0000000000000000"),
+                        new BigDecimal("22.3"),
+                        UUID.fromString("d7ecfe14-4cb3-4f22-a920-dd6f9aa48ed1"),
+                        true)
+        );
+        var actual = coinbaseClient()
+                .rootPath("http://localhost:7777")
+                .authConfig(key, secret, passphrase)
+                .build()
+                .accounts()
+                .get();
+        assertEquals(expected, actual);
+    }
+
     @Test
     void should_return_latest() throws ExecutionException, InterruptedException {
         CurrencyCode base = CurrencyCode.currency("BTC");

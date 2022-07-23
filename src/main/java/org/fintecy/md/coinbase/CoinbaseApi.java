@@ -11,8 +11,8 @@ import static org.fintecy.md.coinbase.model.OrderBookDepth.LEVEL_1;
  * @author batiaev
  * @see <a href="https://docs.cloud.coinbase.com/exchange/reference/">docs</a>
  */
-public interface CoinbaseApi {
-    String ROOT_PATH = "https://api.exchange.coinbase.com/";
+public interface CoinbaseApi extends CoinbaseAccountsApi {
+    String ROOT_PATH = "https://api.exchange.coinbase.com";
 
     /**
      * @param productId - product is e.g. BTC-USD
@@ -27,6 +27,7 @@ public interface CoinbaseApi {
 
     /**
      * Return products stats (daily candle stick)
+     *
      * @param productCode - product code e.g. BTC-USD
      * @return candlestick stats
      * @see <a href="https://api.exchange.coinbase.com/products/BTC-USD/stats">test request</a>
@@ -35,6 +36,7 @@ public interface CoinbaseApi {
 
     /**
      * Return candlestick chart
+     *
      * @param productCode - product code e.g. BTC-USD
      * @param granularity
      * @param start
@@ -45,8 +47,9 @@ public interface CoinbaseApi {
 
     /**
      * Return product order book on required level of granularity
+     *
      * @param productCode - product code e.g. BTC-USD
-     * @param level - granularity can be 1, 2 or 3
+     * @param level       - granularity can be 1, 2 or 3
      * @return order book
      * @see <a href="https://api.exchange.coinbase.com/products/btc-usd/book?level=2">test request</a>
      */

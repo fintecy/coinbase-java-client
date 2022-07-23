@@ -7,8 +7,10 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.key.InstantKeyDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.key.LocalDateKeyDeserializer;
 import org.fintecy.md.coinbase.model.*;
+import org.fintecy.md.coinbase.model.dto.AccountsResponse;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 import org.fintecy.md.coinbase.model.dto.ProductsResponse;
+import org.fintecy.md.coinbase.model.secure.Account;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -35,6 +37,8 @@ public class CoinbaseModule extends SimpleModule {
         addDeserializer(CandlesResponse.class, CandlesResponseDeserializer.INSTANCE);
         addDeserializer(CurrenciesResponse.class, CurrenciesResponseDeserializer.INSTANCE);
         addDeserializer(ProductsResponse.class, ProductsResponseDeserializer.INSTANCE);
+        addDeserializer(Account.class, AccountDeserializer.INSTANCE);
+        addDeserializer(AccountsResponse.class, AccountsResponseDeserializer.INSTANCE);
 
         addKeyDeserializer(LocalDate.class, LocalDateKeyDeserializer.INSTANCE);
         addKeyDeserializer(Instant.class, InstantKeyDeserializer.INSTANCE);

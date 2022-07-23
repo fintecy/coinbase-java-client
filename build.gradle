@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    implementation "commons-codec:commons-codec:1.15"
     implementation "dev.failsafe:failsafe:${failsafeVersion}"
     implementation "org.slf4j:slf4j-api:${slf4jVersion}"
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
