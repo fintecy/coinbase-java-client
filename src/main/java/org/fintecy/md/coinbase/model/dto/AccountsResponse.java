@@ -1,7 +1,7 @@
 package org.fintecy.md.coinbase.model.dto;
 
 import org.fintecy.md.coinbase.model.MicroType;
-import org.fintecy.md.coinbase.model.secure.Account;
+import org.fintecy.md.coinbase.model.accounts.Account;
 
 import java.util.List;
 

@@ -18,6 +18,11 @@ class NoOpCoinbaseApiTest {
     }
 
     @Test
+    void should_throw_exception_for_coinbase_accounts() {
+        assertThrows(IllegalStateException.class, () -> noOpCoinbaseApi.coinbaseAccounts().get());
+    }
+
+    @Test
     void should_throw_exception_for_accounts() {
         assertThrows(IllegalStateException.class, () -> noOpCoinbaseApi.accounts().get());
     }

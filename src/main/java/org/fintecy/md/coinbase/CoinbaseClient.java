@@ -3,10 +3,12 @@ package org.fintecy.md.coinbase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.failsafe.Policy;
 import org.fintecy.md.coinbase.model.*;
+import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
 import org.fintecy.md.coinbase.model.dto.AccountsResponse;
+import org.fintecy.md.coinbase.model.dto.CoinbaseAccountsResponse;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 import org.fintecy.md.coinbase.model.dto.ProductsResponse;
-import org.fintecy.md.coinbase.model.secure.Account;
+import org.fintecy.md.coinbase.model.accounts.Account;
 import org.fintecy.md.coinbase.security.CoinbaseAuthHeaderGenerator;
 
 import java.io.IOException;
@@ -157,6 +159,27 @@ public class CoinbaseClient implements CoinbaseApi {
         }
     }
 
+    @Override
+    public CompletableFuture<List<CoinbaseAccount>> coinbaseAccounts() {
+        try {
+            var method = "GET";
+            var path = "/coinbase-accounts";
+            var payload = "";
+            HttpRequest.Builder uriBuilder = HttpRequest.newBuilder()
+                    .uri(create(rootPath + path));
+            headerGenerator.generateHeaders(create(path), method, payload)
+                    .forEach(uriBuilder::header);
+
+            var httpRequest = uriBuilder.build();
+            HttpResponse<String> send = client.send(httpRequest, ofString());
+            return client.sendAsync(httpRequest, ofString())
+                    .thenApply(HttpResponse::body)
+                    .thenApply(body -> parseResponse(body, CoinbaseAccountsResponse.class))
+                    .thenApply(MicroType::getValue);
+        } catch (Exception e) {
+            return CompletableFuture.failedFuture(e);
+        }
+    }
 
     private <T> T parseResponse(String body, Class<T> tClass) {
         try {

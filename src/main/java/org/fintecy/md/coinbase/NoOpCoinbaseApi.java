@@ -1,7 +1,8 @@
 package org.fintecy.md.coinbase;
 
 import org.fintecy.md.coinbase.model.*;
-import org.fintecy.md.coinbase.model.secure.Account;
+import org.fintecy.md.coinbase.model.accounts.Account;
+import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -54,6 +55,11 @@ public class NoOpCoinbaseApi implements CoinbaseApi {
 
     @Override
     public CompletableFuture<List<Account>> accounts() {
+        throw new IllegalStateException("not implemented");
+    }
+
+    @Override
+    public CompletableFuture<List<CoinbaseAccount>> coinbaseAccounts() {
         throw new IllegalStateException("not implemented");
     }
 }

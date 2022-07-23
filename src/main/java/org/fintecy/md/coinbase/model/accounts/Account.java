@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.model.secure;
+package org.fintecy.md.coinbase.model.accounts;
 
 import org.fintecy.md.coinbase.model.CurrencyCode;
 
@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Account {
+public class Account implements CurrencyBalance {
     private final UUID id;
     private final CurrencyCode currency;
     private final BigDecimal balance;
@@ -32,6 +32,34 @@ public class Account {
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
         return tradingEnabled == account.tradingEnabled && Objects.equals(id, account.id) && Objects.equals(currency, account.currency) && Objects.equals(balance, account.balance) && Objects.equals(hold, account.hold) && Objects.equals(available, account.available) && Objects.equals(profileId, account.profileId);
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public CurrencyCode getCurrency() {
+        return currency;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public BigDecimal getHold() {
+        return hold;
+    }
+
+    public BigDecimal getAvailable() {
+        return available;
+    }
+
+    public UUID getProfileId() {
+        return profileId;
+    }
+
+    public boolean isTradingEnabled() {
+        return tradingEnabled;
     }
 
     @Override
