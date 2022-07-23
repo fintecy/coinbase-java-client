@@ -4,14 +4,12 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import org.fintecy.md.coinbase.model.CurrencyCode;
-import org.fintecy.md.coinbase.model.accounts.Account;
+import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
 import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Set;
-import java.util.UUID;
 
 public class CoinbaseAccountDeserializer extends StdDeserializer<CoinbaseAccount> {
     public final static CoinbaseAccountDeserializer INSTANCE = new CoinbaseAccountDeserializer();

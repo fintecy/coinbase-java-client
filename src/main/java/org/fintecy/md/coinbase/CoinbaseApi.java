@@ -1,11 +1,13 @@
 package org.fintecy.md.coinbase;
 
 import org.fintecy.md.coinbase.model.*;
+import org.fintecy.md.coinbase.model.currencies.Currency;
+import org.fintecy.md.coinbase.model.products.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static org.fintecy.md.coinbase.model.OrderBookDepth.LEVEL_1;
+import static org.fintecy.md.coinbase.model.products.OrderBookDepth.LEVEL_1;
 
 /**
  * @author batiaev

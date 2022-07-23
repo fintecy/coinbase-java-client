@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.model;
+package org.fintecy.md.coinbase.model.products;
 
 import java.math.BigDecimal;
 import java.time.Instant;

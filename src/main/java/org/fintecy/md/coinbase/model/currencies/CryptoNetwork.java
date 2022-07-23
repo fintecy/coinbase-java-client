@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.model;
+package org.fintecy.md.coinbase.model.currencies;
 
 public class CryptoNetwork {
     private final String id;

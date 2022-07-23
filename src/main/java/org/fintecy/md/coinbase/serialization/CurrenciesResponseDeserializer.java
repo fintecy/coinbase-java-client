@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import org.fintecy.md.coinbase.model.Currency;
+import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.fintecy.md.coinbase.model.ExchangeRate;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 

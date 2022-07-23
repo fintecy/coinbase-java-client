@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.model;
+package org.fintecy.md.coinbase.model.products;
 
 import java.util.List;
 import java.util.Objects;

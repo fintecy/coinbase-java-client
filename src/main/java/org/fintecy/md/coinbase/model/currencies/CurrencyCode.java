@@ -1,4 +1,6 @@
-package org.fintecy.md.coinbase.model;
+package org.fintecy.md.coinbase.model.currencies;
+
+import org.fintecy.md.coinbase.model.MicroType;
 
 public class CurrencyCode extends MicroType<String> implements Comparable<CurrencyCode> {
     public CurrencyCode(String value) {

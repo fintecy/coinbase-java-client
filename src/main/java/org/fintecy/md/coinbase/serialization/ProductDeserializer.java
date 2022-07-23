@@ -5,12 +5,12 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.fintecy.md.coinbase.model.ExchangeRate;
-import org.fintecy.md.coinbase.model.Product;
+import org.fintecy.md.coinbase.model.products.Product;
 
 import java.io.IOException;
 import java.util.Set;
 
-import static org.fintecy.md.coinbase.model.Product.product;
+import static org.fintecy.md.coinbase.model.products.Product.product;
 
 public class ProductDeserializer extends StdDeserializer<Product> {
     public final static ProductDeserializer INSTANCE = new ProductDeserializer();

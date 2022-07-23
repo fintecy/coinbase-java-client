@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import org.fintecy.md.coinbase.model.OrderBook;
-import org.fintecy.md.coinbase.model.PriceLevel;
+import org.fintecy.md.coinbase.model.products.OrderBook;
+import org.fintecy.md.coinbase.model.products.PriceLevel;
 
 import java.io.IOException;
 import java.math.BigDecimal;

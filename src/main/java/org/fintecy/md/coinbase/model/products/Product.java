@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.model;
+package org.fintecy.md.coinbase.model.products;
 
 public class Product {
     private final String id;

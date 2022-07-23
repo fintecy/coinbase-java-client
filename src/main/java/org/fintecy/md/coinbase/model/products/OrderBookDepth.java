@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.model;
+package org.fintecy.md.coinbase.model.products;
 
 public enum OrderBookDepth {
     LEVEL_1(1),

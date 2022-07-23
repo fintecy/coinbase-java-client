@@ -1,5 +1,8 @@
 package org.fintecy.md.coinbase.model;
 
+import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
+import org.fintecy.md.coinbase.model.products.ProductCode;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Objects;

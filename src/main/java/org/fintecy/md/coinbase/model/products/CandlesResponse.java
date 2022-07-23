@@ -1,4 +1,6 @@
-package org.fintecy.md.coinbase.model;
+package org.fintecy.md.coinbase.model.products;
+
+import org.fintecy.md.coinbase.model.MicroType;
 
 import java.util.List;
 

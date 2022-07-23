@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.fintecy.md.coinbase.model.ExchangeRate;
-import org.fintecy.md.coinbase.model.Product;
+import org.fintecy.md.coinbase.model.products.Product;
 import org.fintecy.md.coinbase.model.dto.ProductsResponse;
 
 import java.io.IOException;

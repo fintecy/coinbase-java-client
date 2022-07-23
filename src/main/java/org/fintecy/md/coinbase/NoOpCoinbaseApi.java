@@ -3,11 +3,13 @@ package org.fintecy.md.coinbase;
 import org.fintecy.md.coinbase.model.*;
 import org.fintecy.md.coinbase.model.accounts.Account;
 import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
+import org.fintecy.md.coinbase.model.currencies.Currency;
+import org.fintecy.md.coinbase.model.products.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static org.fintecy.md.coinbase.model.Currency.currency;
+import static org.fintecy.md.coinbase.model.currencies.Currency.currency;
 
 /**
  * Available for testing purposes

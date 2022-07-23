@@ -4,11 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.failsafe.Policy;
 import org.fintecy.md.coinbase.model.*;
 import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
+import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.fintecy.md.coinbase.model.dto.AccountsResponse;
 import org.fintecy.md.coinbase.model.dto.CoinbaseAccountsResponse;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 import org.fintecy.md.coinbase.model.dto.ProductsResponse;
 import org.fintecy.md.coinbase.model.accounts.Account;
+import org.fintecy.md.coinbase.model.products.*;
 import org.fintecy.md.coinbase.security.CoinbaseAuthHeaderGenerator;
 
 import java.io.IOException;

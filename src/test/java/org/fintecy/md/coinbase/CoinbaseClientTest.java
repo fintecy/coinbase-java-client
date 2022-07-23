@@ -5,6 +5,8 @@ import com.github.tomakehurst.wiremock.matching.ContainsPattern;
 import org.fintecy.md.coinbase.model.*;
 import org.fintecy.md.coinbase.model.accounts.Account;
 import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
+import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
+import org.fintecy.md.coinbase.model.products.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -18,8 +20,8 @@ import static java.math.BigDecimal.valueOf;
 import static java.time.Instant.ofEpochMilli;
 import static java.time.temporal.ChronoUnit.SECONDS;
 import static org.fintecy.md.coinbase.CoinbaseClient.coinbaseClient;
-import static org.fintecy.md.coinbase.model.Currency.currency;
-import static org.fintecy.md.coinbase.model.Product.product;
+import static org.fintecy.md.coinbase.model.currencies.Currency.currency;
+import static org.fintecy.md.coinbase.model.products.Product.product;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @WireMockTest(httpPort = 7777)

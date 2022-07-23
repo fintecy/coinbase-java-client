@@ -1,6 +1,6 @@
 package org.fintecy.md.coinbase.model.dto;
 
-import org.fintecy.md.coinbase.model.Currency;
+import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.fintecy.md.coinbase.model.MicroType;
 
 import java.util.List;

@@ -1,5 +1,6 @@
 package org.fintecy.md.coinbase.model;
 
+import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
