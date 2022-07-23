@@ -2,9 +2,12 @@ package org.fintecy.md.coinbase;
 
 import org.fintecy.md.coinbase.model.*;
 import org.fintecy.md.coinbase.model.currencies.Currency;
+import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
 import org.fintecy.md.coinbase.model.products.*;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import static org.fintecy.md.coinbase.model.products.OrderBookDepth.LEVEL_1;
@@ -79,4 +82,9 @@ public interface CoinbaseApi extends CoinbaseAccountsApi {
      * @see <a href="https://api.exchange.coinbase.com/currencies">test request</a>
      */
     CompletableFuture<List<Currency>> currencies();
+
+    /**
+     * @return All non-zero balances in coinbase accounts
+     */
+    CompletableFuture<Map<CurrencyCode, BigDecimal>> balances();
 }

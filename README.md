@@ -26,7 +26,7 @@ dependencies {
 ## Usage
 ### Simple client creation
 ```
-coinbaseApi api = coinbaseClient.api();
+coinbaseApi api = CoinbaseClient.api();
 ExchangeRate latest = api.latest("BTC-USD").get();
 ```
 ### Complex client configuration
@@ -47,6 +47,25 @@ var client = coinbaseClient()
     .build();
 ```
 
+### Get all coinbase exchange accounts
+```java
+var accounts = coinbaseClient()
+        .authConfig(key, secret, passphrase)
+        .build()
+        .accounts()
+        .get();
+```
+### Get all non-zero coinbase balances
+```java
+coinbaseClient()
+    .authConfig(key, secret, passphrase)
+    .build()
+    .balances()
+    .join()
+    .forEach((ccy, balance) -> {
+        System.out.println(ccy + "=" + balance);
+    });
+```
 ## Dependencies
 - Java 11+
 - FailSafe

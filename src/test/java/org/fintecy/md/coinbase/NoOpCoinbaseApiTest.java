@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.ExecutionException;
 
 import static org.fintecy.md.coinbase.NoOpCoinbaseApi.SUPPORTED_CURRENCIES;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class NoOpCoinbaseApiTest {
     private CoinbaseApi noOpCoinbaseApi;
@@ -15,6 +14,11 @@ class NoOpCoinbaseApiTest {
     @BeforeEach
     void setUp() {
         noOpCoinbaseApi = new NoOpCoinbaseApi();
+    }
+
+    @Test
+    void should_throw_exception_for_balances() {
+        assertTrue(noOpCoinbaseApi.balances().isCompletedExceptionally());
     }
 
     @Test
