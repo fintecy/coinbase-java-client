@@ -5,12 +5,12 @@
 Async client with CompletableFutures based on new HttpClient (java 11+)
 
 ## Dependency
-https://mvnrepository.com/artifact/org.fintecy.md/coinbase-client/1.0.2
+https://mvnrepository.com/artifact/org.fintecy.md/coinbase-client/1.0.3
 
 ### Gradle
 ```groovy
 dependencies {
-    implementation 'org.fintecy.md:coinbase-client:1.0.2'
+    implementation 'org.fintecy.md:coinbase-client:1.0.3'
 }
 ```
 
@@ -19,7 +19,7 @@ dependencies {
 <dependency>
     <groupId>org.fintecy.md</groupId>
     <artifactId>coinbase-client</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
