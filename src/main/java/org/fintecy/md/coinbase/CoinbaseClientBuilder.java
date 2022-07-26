@@ -8,7 +8,7 @@ import java.net.http.HttpClient;
 import java.util.ArrayList;
 import java.util.List;
 
-class CoinbaseClientBuilder {
+public class CoinbaseClientBuilder {
     private ObjectMapper mapper = new ObjectMapper().registerModule(new CoinbaseModule());
     private HttpClient client = HttpClient.newHttpClient();
     private List<Policy<Object>> policies = new ArrayList<>();
