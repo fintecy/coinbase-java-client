@@ -1,8 +1,8 @@
-package org.fintecy.md.coinbase;
+package org.fintecy.md.coinbase.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.failsafe.Policy;
-import org.fintecy.md.coinbase.serialization.CoinbaseModule;
+import org.fintecy.md.coinbase.rest.serialization.CoinbaseModule;
 
 import java.net.http.HttpClient;
 import java.util.ArrayList;

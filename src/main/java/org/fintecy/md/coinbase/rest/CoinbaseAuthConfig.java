@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase;
+package org.fintecy.md.coinbase.rest;
 
 import java.util.Objects;
 

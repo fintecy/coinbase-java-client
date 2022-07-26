@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase;
+package org.fintecy.md.coinbase.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.failsafe.Policy;
@@ -14,9 +14,9 @@ import org.fintecy.md.coinbase.model.dto.CoinbaseAccountsResponse;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 import org.fintecy.md.coinbase.model.dto.ProductsResponse;
 import org.fintecy.md.coinbase.model.products.*;
-import org.fintecy.md.coinbase.security.CoinbaseAuthHeaderGenerator;
-import org.fintecy.md.coinbase.security.HeaderGenerator;
-import org.fintecy.md.coinbase.security.NoHeadersGenerator;
+import org.fintecy.md.coinbase.rest.security.CoinbaseAuthHeaderGenerator;
+import org.fintecy.md.coinbase.rest.security.HeaderGenerator;
+import org.fintecy.md.coinbase.rest.security.NoHeadersGenerator;
 
 import java.io.IOException;
 import java.math.BigDecimal;

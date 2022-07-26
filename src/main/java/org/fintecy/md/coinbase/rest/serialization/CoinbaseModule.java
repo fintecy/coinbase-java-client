@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.serialization;
+package org.fintecy.md.coinbase.rest.serialization;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.InstantDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.key.InstantKeyDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.key.LocalDateKeyDeserializer;
-import org.fintecy.md.coinbase.model.*;
+import org.fintecy.md.coinbase.model.ExchangeRate;
 import org.fintecy.md.coinbase.model.accounts.Account;
 import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
 import org.fintecy.md.coinbase.model.currencies.Currency;

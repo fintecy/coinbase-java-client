@@ -1,11 +1,13 @@
 package org.fintecy.md.coinbase;
 
+import org.fintecy.md.coinbase.rest.CoinbaseApi;
+import org.fintecy.md.coinbase.rest.NoOpCoinbaseApi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ExecutionException;
 
-import static org.fintecy.md.coinbase.NoOpCoinbaseApi.SUPPORTED_CURRENCIES;
+import static org.fintecy.md.coinbase.rest.NoOpCoinbaseApi.SUPPORTED_CURRENCIES;
 import static org.junit.jupiter.api.Assertions.*;
 
 class NoOpCoinbaseApiTest {

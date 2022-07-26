@@ -1,6 +1,6 @@
-package org.fintecy.md.coinbase.security;
+package org.fintecy.md.coinbase.rest.security;
 
-import org.fintecy.md.coinbase.exeptions.CoinbaseException;
+import org.fintecy.md.coinbase.rest.exeptions.CoinbaseException;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

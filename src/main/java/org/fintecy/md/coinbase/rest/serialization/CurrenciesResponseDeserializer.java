@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.serialization;
+package org.fintecy.md.coinbase.rest.serialization;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.fintecy.md.coinbase.serialization.CurrencyDeserializer.parse;
+import static org.fintecy.md.coinbase.rest.serialization.CurrencyDeserializer.parse;
 
 public class CurrenciesResponseDeserializer extends StdDeserializer<CurrenciesResponse> {
     public final static CurrenciesResponseDeserializer INSTANCE = new CurrenciesResponseDeserializer();

@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.security;
+package org.fintecy.md.coinbase.rest.security;
 
 import java.net.URI;
 import java.util.Map;

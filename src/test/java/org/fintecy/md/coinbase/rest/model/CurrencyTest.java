@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.model;
+package org.fintecy.md.coinbase.rest.model;
 
 import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.junit.jupiter.params.ParameterizedTest;

@@ -1,9 +1,9 @@
-package org.fintecy.md.coinbase;
+package org.fintecy.md.coinbase.rest;
 
-import org.fintecy.md.coinbase.model.*;
+import org.fintecy.md.coinbase.model.ExchangeRate;
+import org.fintecy.md.coinbase.model.products.*;
 import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
-import org.fintecy.md.coinbase.model.products.*;
 
 import java.math.BigDecimal;
 import java.util.List;

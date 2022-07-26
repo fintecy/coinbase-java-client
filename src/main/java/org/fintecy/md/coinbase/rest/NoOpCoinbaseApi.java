@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase;
+package org.fintecy.md.coinbase.rest;
 
 import org.fintecy.md.coinbase.model.ExchangeRate;
 import org.fintecy.md.coinbase.model.accounts.Account;

@@ -1,4 +1,4 @@
-package org.fintecy.md.coinbase.exeptions;
+package org.fintecy.md.coinbase.rest.exeptions;
 
 import java.security.GeneralSecurityException;
 

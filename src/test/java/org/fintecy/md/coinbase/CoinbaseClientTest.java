@@ -2,7 +2,7 @@ package org.fintecy.md.coinbase;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.github.tomakehurst.wiremock.matching.ContainsPattern;
-import org.fintecy.md.coinbase.model.*;
+import org.fintecy.md.coinbase.model.ExchangeRate;
 import org.fintecy.md.coinbase.model.accounts.Account;
 import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
 import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
@@ -19,7 +19,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static java.math.BigDecimal.valueOf;
 import static java.time.Instant.ofEpochMilli;
 import static java.time.temporal.ChronoUnit.SECONDS;
-import static org.fintecy.md.coinbase.CoinbaseClient.coinbaseClient;
+import static org.fintecy.md.coinbase.rest.CoinbaseClient.coinbaseClient;
 import static org.fintecy.md.coinbase.model.currencies.Currency.currency;
 import static org.fintecy.md.coinbase.model.products.Product.product;
 import static org.junit.jupiter.api.Assertions.assertEquals;
