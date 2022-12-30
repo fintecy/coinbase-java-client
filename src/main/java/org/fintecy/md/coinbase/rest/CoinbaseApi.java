@@ -1,6 +1,7 @@
 package org.fintecy.md.coinbase.rest;
 
 import org.fintecy.md.coinbase.model.ExchangeRate;
+import org.fintecy.md.coinbase.model.currencies.CurrencyDetails;
 import org.fintecy.md.coinbase.model.products.*;
 import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
@@ -82,6 +83,12 @@ public interface CoinbaseApi extends CoinbaseAccountsApi {
      * @see <a href="https://api.exchange.coinbase.com/currencies">test request</a>
      */
     CompletableFuture<List<Currency>> currencies();
+
+    /**
+     * @return currency details
+     * @see <a href="https://api.exchange.coinbase.com/currencies/BTC">test request</a>
+     */
+    CompletableFuture<CurrencyDetails> currencyDetails(String currencyId);
 
     /**
      * @return All non-zero balances in coinbase accounts

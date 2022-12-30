@@ -30,8 +30,8 @@ public class Currency extends MicroType<String> implements Comparable<Currency> 
         this.supportedNetwork = supportedNetwork;
     }
 
-    public static Currency currency(String id, String name, String status) {
-        return new Currency(id, name, null, new CurrencyStatus(status), null, "0.00000001",
+    public static Currency currency(String id, String name, String status, String maxPrecision) {
+        return new Currency(id, name, null, new CurrencyStatus(status), null, maxPrecision,
                 Set.of(), null, CryptoNetworkName.ETHEREUM, null);
     }
     public static Currency currency(String code) {

@@ -5,17 +5,16 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.fintecy.md.coinbase.model.currencies.Currency;
-import org.fintecy.md.coinbase.model.ExchangeRate;
 
 import java.io.IOException;
 import java.util.Set;
 
 public class CurrencyDeserializer extends StdDeserializer<Currency> {
     public final static CurrencyDeserializer INSTANCE = new CurrencyDeserializer();
-    public static final Set<String> REQUIRED_FIELDS = Set.of("id", "name", "status");
+    public static final Set<String> REQUIRED_FIELDS = Set.of("id", "name", "status", "max_precision");
 
     public CurrencyDeserializer() {
-        super(ExchangeRate.class);
+        super(Currency.class);
     }
 
     public static Currency parse(JsonParser jp, JsonNode node) {
@@ -26,7 +25,8 @@ public class CurrencyDeserializer extends StdDeserializer<Currency> {
         return Currency.currency(
                 node.get("id").asText(),
                 node.get("name").asText(),
-                node.get("status").asText()
+                node.get("status").asText(),
+                node.get("max_precision").asText()
         );
     }
 

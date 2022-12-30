@@ -5,6 +5,7 @@ import org.fintecy.md.coinbase.model.accounts.Account;
 import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
 import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
+import org.fintecy.md.coinbase.model.currencies.CurrencyDetails;
 import org.fintecy.md.coinbase.model.products.*;
 
 import java.math.BigDecimal;
@@ -56,6 +57,11 @@ public class NoOpCoinbaseApi implements CoinbaseApi {
     @Override
     public CompletableFuture<List<Currency>> currencies() {
         return CompletableFuture.completedFuture(SUPPORTED_CURRENCIES);
+    }
+
+    @Override
+    public CompletableFuture<CurrencyDetails> currencyDetails(String currencyId) {
+        return CompletableFuture.failedFuture(new IllegalStateException("not implemented"));
     }
 
     @Override

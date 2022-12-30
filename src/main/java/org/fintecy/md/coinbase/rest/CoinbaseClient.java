@@ -9,6 +9,7 @@ import org.fintecy.md.coinbase.model.accounts.CoinbaseAccount;
 import org.fintecy.md.coinbase.model.accounts.CurrencyBalance;
 import org.fintecy.md.coinbase.model.currencies.Currency;
 import org.fintecy.md.coinbase.model.currencies.CurrencyCode;
+import org.fintecy.md.coinbase.model.currencies.CurrencyDetails;
 import org.fintecy.md.coinbase.model.dto.AccountsResponse;
 import org.fintecy.md.coinbase.model.dto.CoinbaseAccountsResponse;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
@@ -149,6 +150,17 @@ public class CoinbaseClient implements CoinbaseApi {
                 .thenApply(HttpResponse::body)
                 .thenApply(body -> parseResponse(body, CurrenciesResponse.class))
                 .thenApply(MicroType::getValue);
+    }
+
+    @Override
+    public CompletableFuture<CurrencyDetails> currencyDetails(String currencyId) {
+        var httpRequest = HttpRequest.newBuilder()
+                .uri(create(rootPath + "/currencies/" + currencyId))
+                .build();
+
+        return client.sendAsync(httpRequest, ofString())
+                .thenApply(HttpResponse::body)
+                .thenApply(body -> parseResponse(body, CurrencyDetails.class));
     }
 
     @Override

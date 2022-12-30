@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.fintecy.md.coinbase.model.currencies.Currency;
-import org.fintecy.md.coinbase.model.ExchangeRate;
 import org.fintecy.md.coinbase.model.dto.CurrenciesResponse;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class CurrenciesResponseDeserializer extends StdDeserializer<CurrenciesRe
     public final static CurrenciesResponseDeserializer INSTANCE = new CurrenciesResponseDeserializer();
 
     public CurrenciesResponseDeserializer() {
-        super(ExchangeRate.class);
+        super(CurrenciesResponse.class);
     }
 
     @Override

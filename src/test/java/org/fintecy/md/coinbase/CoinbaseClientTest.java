@@ -252,8 +252,8 @@ class CoinbaseClientTest {
                 .willReturn(aResponse()
                         .withBodyFile("currencies.json")));
         var expected = List.of(
-                currency("GBP", "British Pound", "online"),
-                currency("ETH", "Ether", "online"));
+                currency("GBP", "British Pound", "online", "0.01"),
+                currency("ETH", "Ether", "online", "0.00000001"));
         var actual = coinbaseClient()
                 .rootPath("http://localhost:7777")
                 .build()
